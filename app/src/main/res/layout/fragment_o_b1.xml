@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="17dp"
+    tools:context=".view.fragment.Onboarding.OBFragment1">
+
+    <ImageView
+        android:id="@+id/ob1_img"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:src="@drawable/blaze" />
+
+    <TextView
+        android:id="@+id/ob1_text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Title"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:id="@+id/ob1_text_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:text="TdasdasdasdsadaTdasdasdasdsadasditleTdasdasdasdsadasditleTdasdasdasdsadasditleTdasdasdasdsadasditlesditle" />
+
+</LinearLayout>

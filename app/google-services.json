@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "239162440918",
+    "project_id": "napp-b8f10",
+    "storage_bucket": "napp-b8f10.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:239162440918:android:ea08ad9d35bd1cbd6c5d77",
+        "android_client_info": {
+          "package_name": "com.example.napp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGlmDEklZHsL7bdR0kFRKOHh7ExFt9ie4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
