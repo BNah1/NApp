@@ -9,9 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.napp.MainActivity;
 import com.example.napp.R;
-import com.example.napp.adapter.ViewPageAdapter;
+import com.example.napp.adapter.ViewPageAdapterOB;
 import com.example.napp.data.model.Onboading;
 
 import java.util.ArrayList;
@@ -24,7 +23,7 @@ public class OnBoardingActivity extends AppCompatActivity {
     private TextView txtSkip, txtNext;
     private ViewPager viewPager;
     private CircleIndicator circleIndicator;
-    private ViewPageAdapter viewPageAdapter;
+    private ViewPageAdapterOB viewPageAdapterOB;
     private List<Onboading> list;
 
     @Override
@@ -34,11 +33,11 @@ public class OnBoardingActivity extends AppCompatActivity {
 
         init();
 
-        viewPageAdapter = new ViewPageAdapter(getSupportFragmentManager(),
+        viewPageAdapterOB = new ViewPageAdapterOB(getSupportFragmentManager(),
                 FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT,
                 list
         );
-        viewPager.setAdapter(viewPageAdapter);
+        viewPager.setAdapter(viewPageAdapterOB);
         circleIndicator.setViewPager(viewPager);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override

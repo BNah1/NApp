@@ -1,18 +1,24 @@
 package com.example.napp.viewmodel;
 
+import android.content.Context;
+import android.util.Log;
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.napp.R;
 import com.example.napp.data.model.Task;
+import com.example.napp.data.sql.DatabaseManager;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class TaskViewModel extends ViewModel {
     private MutableLiveData<List<Task>> listTaskLiveData;
     private List<Task> listTask;
     private MutableLiveData<String> text_name, text_description;
+    private Context context;
+
+    private DatabaseManager databaseManager;
 
     public MutableLiveData<String> getText_name() {
         return text_name;
@@ -31,7 +37,8 @@ public class TaskViewModel extends ViewModel {
     }
 
 
-    public TaskViewModel() {
+    public TaskViewModel(Context context) {
+        this.context = context.getApplicationContext();
         listTaskLiveData = new MutableLiveData<>();
         text_name = new MutableLiveData<>();
         text_description = new MutableLiveData<>();
@@ -39,8 +46,9 @@ public class TaskViewModel extends ViewModel {
     }
 
     private void initData(){
-        listTask = new ArrayList<>();
-        listTask.add(new Task(R.drawable.ic_launcher_foreground,"Nah","DSDSADASDSADSA"));
+        databaseManager = DatabaseManager.getInstance(this.context);
+        listTask = databaseManager.getData();
+//        listTask.add(new Task(R.drawable.ic_launcher_foreground,"Nah","DSDSADASDSADSA"));
         listTaskLiveData.setValue(listTask);
     }
 
@@ -55,15 +63,34 @@ public class TaskViewModel extends ViewModel {
     public void addTask(){
         String inputTxtN = text_name.getValue();
         String inputTxtD = text_description.getValue();
+
+        // gia tri mac dinh
         if(inputTxtN == null && inputTxtD == null){
             inputTxtD = " Null ";
             inputTxtN = " Null ";
         }
-        listTask.add(0,new Task(R.drawable.ic_launcher_foreground, inputTxtN, inputTxtD));
+
+        Task task = new Task(R.drawable.buster, inputTxtN, inputTxtD, 0, null);
+        listTask.add(task.getPosition(),task);
+        databaseManager.addData(task);
+
+        // cap nhap lai postion trong sqlite
+        updateSQLITE();
+
         setText_name("");
         setText_description("");
         listTaskLiveData.setValue(listTask);
     }
+
+    private void updateSQLITE() {
+        for (Task task : listTask) {
+            boolean success = databaseManager.updatePostion(task, listTask.indexOf(task));
+            if (!success) {
+                Log.d("TaskViewModel", "Cập nhật thất bại cho task: " + task.getId());
+            }
+        }
+    }
+
 
     public void downTask(Task task){
         int i = listTask.indexOf(task);
@@ -72,7 +99,12 @@ public class TaskViewModel extends ViewModel {
             listTask.set(i + 1, task);
             listTask.set(i,tsk);
         }
+
+        // cap nhap lai postion trong sqlite
+        updateSQLITE();
+
         listTaskLiveData.setValue(listTask);
+
     }
 
     public void upTask(Task task){
@@ -82,7 +114,12 @@ public class TaskViewModel extends ViewModel {
             listTask.set(i - 1, task);
             listTask.set(i,tsk);
         }
+
+        // cap nhap lai postion trong sqlite
+        updateSQLITE();
+
         listTaskLiveData.setValue(listTask);
+
     }
 
     public void deleteTask(Task task){

@@ -11,12 +11,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.napp.MainActivity;
 import com.example.napp.R;
 import com.example.napp.adapter.TaskAdapter;
 import com.example.napp.data.model.Task;
+import com.example.napp.data.sql.DatabaseManager;
+import com.example.napp.data.sql.TaskViewModelFactory;
 import com.example.napp.databinding.ActivityTaskBinding;
 import com.example.napp.viewmodel.TaskViewModel;
 
@@ -28,6 +30,7 @@ public class ActivityTask extends AppCompatActivity {
     private Button button;
     private TaskAdapter adapter;
     private TaskViewModel viewModel;
+    private DatabaseManager databaseManager;
 
 
     @Override
@@ -39,9 +42,11 @@ public class ActivityTask extends AppCompatActivity {
 
 
     private void init(){
+        // khoi tao SQLITE
+        databaseManager =  DatabaseManager.getInstance(this);
 
         // khởi tạo viewmodel
-        viewModel = new ViewModelProvider(this).get(TaskViewModel.class);
+        viewModel = new ViewModelProvider(this, new TaskViewModelFactory(this)).get(TaskViewModel.class);
 
         // Gán ViewModel vào DataBinding
         ActivityTaskBinding activityTaskBinding = DataBindingUtil.setContentView(this,R.layout.activity_task);
@@ -75,6 +80,7 @@ public class ActivityTask extends AppCompatActivity {
                                     break;
                                 case "DELETE":
                                     viewModel.deleteTask(task);
+                                    databaseManager.deleteData(task.getId());
                                     Toast.makeText(ActivityTask.this,"Xoa",Toast.LENGTH_LONG).show();
                                     break;
                             }

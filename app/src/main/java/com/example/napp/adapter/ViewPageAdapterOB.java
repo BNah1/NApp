@@ -12,10 +12,10 @@ import com.example.napp.view.fragment.Onboarding.OBFragment1;
 
 import java.util.List;
 
-public class ViewPageAdapter extends FragmentStatePagerAdapter {
+public class ViewPageAdapterOB extends FragmentStatePagerAdapter {
 
     private List<Onboading> list;
-    public ViewPageAdapter(@NonNull FragmentManager fm, int behavior, List<Onboading> list ) {
+    public ViewPageAdapterOB(@NonNull FragmentManager fm, int behavior, List<Onboading> list ) {
         super(fm, behavior);
         this.list = list;
     }
