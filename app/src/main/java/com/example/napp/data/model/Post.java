@@ -3,7 +3,7 @@ package com.example.napp.data.model;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class post {
+public class Post {
     private final String postId;
     private final String posterId;
     private final String fileUrl;
@@ -12,7 +12,7 @@ public class post {
     private final List<String> like;
 
 
-    public  post(String postId, String posterId, String fileUrl, LocalDateTime timeCreated, List<String> like) {
+    public Post(String postId, String posterId, String fileUrl, LocalDateTime timeCreated, List<String> like) {
         this.postId = postId;
         this.posterId = posterId;
         this.fileUrl = fileUrl;

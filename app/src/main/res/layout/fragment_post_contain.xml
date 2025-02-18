@@ -12,7 +12,7 @@
     >
 
 
-    <!-- Thong tin user/post-->
+    <!-- Thong tin user/Post-->
 
     <LinearLayout
         android:layout_width="match_parent"
