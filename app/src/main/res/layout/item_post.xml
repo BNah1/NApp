@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat
-    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context=".view.fragment.Post.PostContain"
-    android:layout_marginTop="5dp"
+    android:layout_marginTop="10dp"
 
     >
 
-
-    <!-- Thong tin user/post-->
+    <!-- Thong tin user/Post-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -88,7 +85,7 @@
     <!-- Hinh anh neu co -->
 
     <ImageView
-        android:id="@+id/imageViewPost"
+        android:id="@+id/post_image"
         android:layout_width="wrap_content"
         android:layout_height="400dp"
         android:maxHeight="400dp"
@@ -138,13 +135,13 @@
             android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Thich"
+            android:text="111"
             />
 
 
         <ImageView
             android:layout_marginStart="16dp"
-            android:id="@+id/post_comment"
+            android:id="@+id/post_view_comment"
             android:layout_width="20dp"
             android:layout_height="30dp"
             android:scaleType="fitCenter"
@@ -153,11 +150,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
         <TextView
-            android:id="@+id/post_txt_comment_numbder"
+            android:id="@+id/post_txt_comment_number"
             android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Thich"
+            android:text="5"
             />
 
     </LinearLayout>

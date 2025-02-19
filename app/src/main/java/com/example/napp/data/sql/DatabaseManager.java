@@ -46,6 +46,7 @@ public class DatabaseManager {
         }
     }
 
+
     public List<Task> getData() {
         List<Task> dataList = new ArrayList<>();
         String sort = " ORDER BY position ASC";

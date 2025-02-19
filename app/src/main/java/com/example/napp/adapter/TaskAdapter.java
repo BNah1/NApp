@@ -55,7 +55,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
     }
 
     public class TaskViewHolder extends RecyclerView.ViewHolder{
-        private ItemTaskBinding itemTaskBinding;
+        private final ItemTaskBinding itemTaskBinding;
 
 
         public TaskViewHolder(@NonNull ItemTaskBinding itemTaskBinding) {
@@ -67,6 +67,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         }
 
         private void Bind(Task task, OnTapActionListener listener){
+
             itemTaskBinding.itemTaskImg.setImageResource(task.getImage());
             itemTaskBinding.itemTaskTxtName.setText(task.getName());
             itemTaskBinding.itemTaskTxtSr.setText(task.getDescription());

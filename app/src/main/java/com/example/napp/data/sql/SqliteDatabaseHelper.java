@@ -1,7 +1,6 @@
 package com.example.napp.data.sql;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -22,7 +21,7 @@ public class SqliteDatabaseHelper extends SQLiteOpenHelper {
         return instance;
     }
 
-    public SqliteDatabaseHelper(Context context) {
+    private SqliteDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 

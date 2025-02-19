@@ -3,28 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/blaze"
     tools:context=".view.fragment.NewFeedScreen">
 
 
-    <!-- Fragment 1 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <!-- Fragment 1 -->
-        <fragment
-            android:id="@+id/new_feed_screen_creation_post_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
 
         <!-- RecyclerView thay vì ListView -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/new_feed_recyclerview_post_contain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:nestedScrollingEnabled="false" />
+            android:nestedScrollingEnabled="true"
+            tools:listitem="@layout/item_post" />
 
     </LinearLayout>
 
