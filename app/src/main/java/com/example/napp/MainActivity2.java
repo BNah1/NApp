@@ -23,9 +23,7 @@ public class MainActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main2);
-
         init();
-
     }
 
     private void init(){
@@ -65,7 +63,6 @@ public class MainActivity2 extends AppCompatActivity {
             }
         });
 
-
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -85,6 +82,5 @@ public class MainActivity2 extends AppCompatActivity {
         });
 
     }
-
 
 }
