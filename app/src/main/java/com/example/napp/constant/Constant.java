@@ -3,6 +3,8 @@ package com.example.napp.constant;
 import com.example.napp.R;
 import com.example.napp.data.model.Comment;
 import com.example.napp.data.model.Post;
+import com.example.napp.data.model.UserProfile;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -11,6 +13,11 @@ import java.util.List;
 public class Constant {
     static public int testAvatar = R.drawable.ic_launcher_background;
     static public int testImage = R.drawable.buster;
+
+
+    // tao UserProfile hien tai khi da dang nhap
+    static public UserProfile testUser = new UserProfile("bonah","B@gmail.com","111",R.drawable.xenon_art,"b-21-11");
+
 
     // tao list post
     static public List<Post> testListPost= new ArrayList<>();

@@ -1,29 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.fragment.NewFeedScreen">
+<layout>
+    <data>
+        <variable
+            name="PostViewModel"
+            type="com.example.napp.viewmodel.PostViewModel" />
+    </data>
 
-
-    <LinearLayout
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        tools:context=".view.fragment.NewFeedScreen">
 
-        <!-- Fragment 1 -->
 
-        <!-- RecyclerView thay vì ListView -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/new_feed_recyclerview_post_contain"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:nestedScrollingEnabled="true"
-            tools:listitem="@layout/item_post" />
+            android:orientation="vertical">
+            <!-- Fragment 1 -->
 
-    </LinearLayout>
+            <androidx.fragment.app.FragmentContainerView
+                android:layout_marginTop="10dp"
+                android:id="@+id/new_feed_post_creation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:name="com.example.napp.view.fragment.Post.CreationContain"
+                />
+
+            <!-- RecyclerView thay vì ListView -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="10dp"
+                android:id="@+id/new_feed_recyclerview_post_contain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                tools:listitem="@layout/item_post" />
+
+        </LinearLayout>
 
 
 
-</ScrollView>
+    </ScrollView>
+
+</layout>
