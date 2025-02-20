@@ -2,10 +2,12 @@ package com.example.napp.viewmodel;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.napp.MainActivity;
 import com.example.napp.R;
 import com.example.napp.data.model.Task;
 import com.example.napp.data.sql.DatabaseManager;
@@ -14,6 +16,7 @@ import java.util.List;
 
 public class TaskViewModel extends ViewModel {
     private MutableLiveData<List<Task>> listTaskLiveData;
+
     private List<Task> listTask;
     private MutableLiveData<String> text_name, text_description;
     private Context context;
@@ -37,8 +40,7 @@ public class TaskViewModel extends ViewModel {
     }
 
 
-    public TaskViewModel(Context context) {
-        this.context = context.getApplicationContext();
+    public TaskViewModel() {
         listTaskLiveData = new MutableLiveData<>();
         text_name = new MutableLiveData<>();
         text_description = new MutableLiveData<>();
@@ -127,4 +129,11 @@ public class TaskViewModel extends ViewModel {
         listTask.remove(i);
         listTaskLiveData.setValue(listTask);
     }
+
+    public void clearAllTasks() {
+        listTask.clear();
+        listTaskLiveData.setValue(databaseManager.getData());
+    }
+
+
 }

@@ -74,7 +74,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
             //image
             itemPostBinding.postViewAvatar.setImageResource(Constant.testAvatar);
-            itemPostBinding.postImage.setImageResource(Constant.testImage);
+//            itemPostBinding.postImage.setImageResource(Constant.testImage);
 
             //image button
             itemPostBinding.postViewComment.setImageResource(R.drawable.icon_message);

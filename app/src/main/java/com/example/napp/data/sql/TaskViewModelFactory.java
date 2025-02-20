@@ -17,6 +17,6 @@ public class TaskViewModelFactory implements ViewModelProvider.Factory {
     @NonNull
     @Override
     public <T extends ViewModel> T create(Class<T> modelClass) {
-        return (T) new TaskViewModel(context);
+        return (T) new TaskViewModel();
     }
 }
