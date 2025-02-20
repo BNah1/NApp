@@ -21,13 +21,11 @@ public class PostViewModel extends ViewModel {
     private MutableLiveData<String> text;
     private MutableLiveData<List<Post>> listPostLive;
     private List<Post> listPost;
-    private Context context;
     private UserProfile userProfile;
 
-    public PostViewModel(Context context) {
+    public PostViewModel() {
         text = new MutableLiveData<>();
         listPostLive = new MutableLiveData<>();
-        this.context = context.getApplicationContext();
         initData();
     }
 
@@ -38,6 +36,7 @@ public class PostViewModel extends ViewModel {
     private void initData(){
         userProfile = Constant.testUser;
         listPost = Constant.getTestListPost();
+        Log.d("DEBUG", "ViewModel: " + "da chay init data");
         listPostLive.setValue(listPost);
     }
 
@@ -56,5 +55,6 @@ public class PostViewModel extends ViewModel {
         text.setValue("");
         Log.d("d",post.getPostText()+" "+post.getTimeCreated());
         listPostLive.setValue(listPost);
+        Log.d("RecyclerView", "Size of List of Post is(trong VM) : " + listPost.size());
     }
 }

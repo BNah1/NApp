@@ -47,6 +47,7 @@ public class Constant {
 
     static Date time = new Date();
     static Post post1 = new Post("1","bonah1","la link anh nhung tam thoi bo qua",time,stringList,getTestListComment(),testLongString);
+
     static Comment comment = new Comment("bonah1","bonah1-11","bonah1-11-112",time,stringList);
 
 
