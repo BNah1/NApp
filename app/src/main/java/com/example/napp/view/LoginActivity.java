@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
 import com.example.napp.MainActivity;
 import com.example.napp.R;
@@ -53,6 +55,15 @@ public class LoginActivity extends AppCompatActivity {
         // Gán ViewModel vào DataBinding
         activityLoginBinding.setLoginViewModel(loginViewModel);
         activityLoginBinding.setLifecycleOwner(this);
+
+        activityLoginBinding.loginTxtRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+//                startActivity(intent);
+                Toast.makeText(getApplication(),"Register",Toast.LENGTH_LONG).show();
+            }
+        });
 
     }
 

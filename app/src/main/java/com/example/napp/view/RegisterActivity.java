@@ -1,0 +1,61 @@
+package com.example.napp.view;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+
+import android.content.Intent;
+import android.os.Bundle;
+
+import com.example.napp.MainActivity;
+import com.example.napp.R;
+import com.example.napp.databinding.ActivityLoginBinding;
+import com.example.napp.viewmodel.LoginViewModel;
+import com.google.firebase.auth.FirebaseAuth;
+
+public class RegisterActivity extends AppCompatActivity {
+
+    private FirebaseAuth mAuth;
+    private LoginViewModel viewModel;
+
+    private ActivityLoginBinding activityLoginBinding;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_register);
+
+        init();
+    }
+
+
+    private void init(){
+        //Khoi tao firebase
+        mAuth = FirebaseAuth.getInstance();
+
+        //Khoi tao databinding
+        activityLoginBinding = DataBindingUtil.setContentView(this,R.layout.activity_register);
+
+        //khoi tao viewmodel
+        viewModel = new ViewModelProvider(this).get(LoginViewModel.class);
+
+        //Gán viewmodel vào databinding
+        activityLoginBinding.setLoginViewModel(viewModel);
+        activityLoginBinding.setLifecycleOwner(this);
+    }
+
+    private void observeIntent(){
+        // Quan sat chuyen huong
+        viewModel.navigateToHome.observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if(Boolean.TRUE.equals(aBoolean)){
+                    Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
+    }
+
+}
