@@ -117,8 +117,8 @@ public class LoginViewModel extends ViewModel {
 
 
 
-    public void onClickRegister(){
-        navigateToHome.setValue(true);
-    }
+//    public void onClickRegister(){
+//        navigateToHome.setValue(true);
+//    }
 
 }

@@ -11,6 +11,7 @@ import android.os.Bundle;
 import com.example.napp.MainActivity;
 import com.example.napp.R;
 import com.example.napp.databinding.ActivityLoginBinding;
+import com.example.napp.databinding.ActivityRegisterBinding;
 import com.example.napp.viewmodel.LoginViewModel;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -19,7 +20,7 @@ public class RegisterActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private LoginViewModel viewModel;
 
-    private ActivityLoginBinding activityLoginBinding;
+    private ActivityRegisterBinding activityRegisterBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         init();
+        observeIntent();
     }
 
 
@@ -35,14 +37,14 @@ public class RegisterActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         //Khoi tao databinding
-        activityLoginBinding = DataBindingUtil.setContentView(this,R.layout.activity_register);
+        activityRegisterBinding = DataBindingUtil.setContentView(this,R.layout.activity_register);
 
         //khoi tao viewmodel
         viewModel = new ViewModelProvider(this).get(LoginViewModel.class);
 
         //Gán viewmodel vào databinding
-        activityLoginBinding.setLoginViewModel(viewModel);
-        activityLoginBinding.setLifecycleOwner(this);
+        activityRegisterBinding.setLoginViewModel(viewModel);
+        activityRegisterBinding.setLifecycleOwner(this);
     }
 
     private void observeIntent(){

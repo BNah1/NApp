@@ -129,7 +129,6 @@
             android:id="@+id/login_txt_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="@{()-> LoginViewModel.onClickRegister()}"
             android:text="Register now"
             android:textColor="#22831C"
             android:textSize="18sp"

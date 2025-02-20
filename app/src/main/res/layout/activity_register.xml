@@ -109,7 +109,7 @@
             android:layout_width="263dp"
             android:layout_height="44dp"
             android:layout_marginTop="16dp"
-            android:onClick="@{()-> LoginViewModel.onClickLogin()}"
+            android:onClick="@{()-> LoginViewModel.onClickSignUp()}"
             android:text="Sign in"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"

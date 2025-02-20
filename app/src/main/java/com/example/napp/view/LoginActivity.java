@@ -59,9 +59,8 @@ public class LoginActivity extends AppCompatActivity {
         activityLoginBinding.loginTxtRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-//                startActivity(intent);
-                Toast.makeText(getApplication(),"Register",Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
             }
         });
 
