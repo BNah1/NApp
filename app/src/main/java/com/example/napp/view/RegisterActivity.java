@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.napp.MainActivity;
 import com.example.napp.R;
@@ -14,6 +15,8 @@ import com.example.napp.databinding.ActivityLoginBinding;
 import com.example.napp.databinding.ActivityRegisterBinding;
 import com.example.napp.viewmodel.LoginViewModel;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.concurrent.TimeUnit;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -47,14 +50,22 @@ public class RegisterActivity extends AppCompatActivity {
         activityRegisterBinding.setLifecycleOwner(this);
     }
 
+
     private void observeIntent(){
         // Quan sat chuyen huong
         viewModel.navigateToHome.observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
                 if(Boolean.TRUE.equals(aBoolean)){
+                    try {
+                        Toast.makeText(RegisterActivity.this,"Đăng ký thành công",Toast.LENGTH_LONG).show();
+                        TimeUnit.SECONDS.sleep(1);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
                     Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                     startActivity(intent);
+                    viewModel.navigateToHome.setValue(false);
                 }
             }
         });

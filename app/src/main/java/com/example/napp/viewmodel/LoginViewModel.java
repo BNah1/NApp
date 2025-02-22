@@ -16,6 +16,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.Objects;
+
 
 public class LoginViewModel extends ViewModel {
 
@@ -58,21 +60,9 @@ public class LoginViewModel extends ViewModel {
     }
 
     public void onClickLogin(){
-        String emailInput = getEmail().trim();  // Loại bỏ khoảng trắng trước và sau
-        String passInput = getPass().trim();
-
-        Log.d("Login", "Email: " + emailInput);
-
-        // Khởi tạo đối tượng User và kiểm tra tính hợp lệ
-        User user = new User(emailInput, passInput);
-
-        if (!user.isValidPass()) {
-            messageLogin.setValue("Mật khẩu phải có ít nhất 6 ký tự");
-        } else if (!user.isValidEmail()) {
-            messageLogin.setValue("Email không hợp lệ"+ emailInput);
-        } else {
+        if (checkInput(email,pass,null)){
             FirebaseAuth mAuth = FirebaseAuth.getInstance();
-            mAuth.signInWithEmailAndPassword(emailInput,passInput).addOnCompleteListener(task -> {
+            mAuth.signInWithEmailAndPassword(email.trim(),pass.trim()).addOnCompleteListener(task -> {
                 if(task.isSuccessful()){
                     messageLogin.setValue("Đăng nhập thành công");
                     navigateToHome.setValue(true);
@@ -84,23 +74,10 @@ public class LoginViewModel extends ViewModel {
         }
     }
 
-
     public void onClickSignUp(){
-        String emailInput = getEmail().trim();
-        String passInput = getPass().trim();
-        String pass2Input = getPass2().trim();
-
-        User user = new User(emailInput,passInput);
-
-        if(!user.isValidPass()){
-            messageLogin.setValue("Mật khẩu phải có ít nhất 6 ký tự");
-        } else if (!user.isValidEmail()) {
-            messageLogin.setValue("Email không hợp lệ"+ emailInput);
-        } else if(!passInput.equals(pass2Input)){
-            messageLogin.setValue("Mật khẩu nhập lại không trùng khớp");
-        } else {
+        if (checkInput(email,pass,pass2)){
             FirebaseAuth mAuth = FirebaseAuth.getInstance();
-            mAuth.createUserWithEmailAndPassword(emailInput, passInput)
+            mAuth.createUserWithEmailAndPassword(email.trim(), pass.trim())
                     .addOnCompleteListener(task -> {
                         if(task.isSuccessful()){
                             messageLogin.setValue("Đăng nhập thành công");
@@ -112,13 +89,26 @@ public class LoginViewModel extends ViewModel {
                         }
                     });
         }
-
     }
 
 
+    private boolean checkInput( String email, String pass, String pass2) {
+        if (email == null || pass == null || (pass2 != null && !Objects.equals(pass2, pass))){
+            messageLogin.setValue("Vui lòng nhập đủ thông tin");
+            return false;
+        }
 
-//    public void onClickRegister(){
-//        navigateToHome.setValue(true);
-//    }
+        // Khởi tạo đối tượng User và kiểm tra tính hợp lệ
+        User user = new User(email.trim(), pass.trim());
+
+        if (!user.isValidPass()) {
+            messageLogin.setValue("Mật khẩu phải có ít nhất 6 ký tự");
+            return false;
+        } else if (!user.isValidEmail()) {
+            messageLogin.setValue("Email không hợp lệ" + email);
+            return false;
+        }
+        return true;
+    }
 
 }
