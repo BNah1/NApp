@@ -51,7 +51,7 @@ public class PostViewModel extends ViewModel {
     public void addPost(){
         String inputText = text.getValue();
         Post post = new Post("111",userProfile.getUid(), "link",new Date(),new ArrayList<String>(),new ArrayList<Comment>(),inputText);
-        listPost.add(post);
+        listPost.add(0,post);
         text.setValue("");
         Log.d("d",post.getPostText()+" "+post.getTimeCreated());
         listPostLive.setValue(listPost);

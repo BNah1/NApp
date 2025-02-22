@@ -80,7 +80,7 @@ public class OnBoardingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(viewPager.getCurrentItem() ==2){
-                    Intent intent = new Intent(OnBoardingActivity.this, MainActivity2.class);
+                    Intent intent = new Intent(OnBoardingActivity.this, MainActivity.class);
                     startActivity(intent);
                 } else {
                     viewPager.setCurrentItem(2);
